@@ -49,8 +49,6 @@ if census is not None:
     list = list['Class']
     
     censusdf['Class'] = censusdf['Zip Code'].map(list)
-    
-    st.write(censusdf)
 
     check = False
 
