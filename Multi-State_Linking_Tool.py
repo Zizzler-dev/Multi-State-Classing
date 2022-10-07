@@ -22,17 +22,6 @@ if census is not None:
 
     count = censusdf.count(axis=0)[1]
 
-    for i in censusdf.index:
-        if(i > 0 and i <(count-1) and censusdf['Relationship'][i] != 'Employee' and censusdf['Zip Code'][i] != censusdf['Zip Code'][i-1]):
-            check = True
-            index = i
-            while (check == True):
-                censusdf['Zip Code'][i] = censusdf['Zip Code'][i-1]
-                if(censusdf['Relationship'][i+1] != 'Employee'):
-                    i += 1
-                else: 
-                    i = index
-                    check = False
 
     st.subheader("Upload Classed File Here:")
 
@@ -49,6 +38,8 @@ if census is not None:
     list = list['Class']
     
     censusdf['Class'] = censusdf['Zip Code'].map(list)
+    
+    st.write(censusdf)
 
     check = False
 
